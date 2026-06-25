@@ -1,0 +1,61 @@
+<template>
+
+    <!-- 🔥 CUSTOM TOAST -->
+    <template if:true={showToast}>
+        <div class="toast">
+            {toastMessage}
+        </div>
+    </template>
+
+    <div class="wrapper">
+        <div class="card">
+
+            <h2>💡 Share Your Idea</h2>
+
+            <lightning-input 
+                label="Title" 
+                value={title} 
+                onchange={handleTitle}>
+            </lightning-input>
+
+            <lightning-input 
+                label="Tags"
+                value={tags}
+                onchange={handleTags}
+                placeholder="design, UI, performance">
+            </lightning-input>
+
+            <div class="row">
+                <lightning-combobox 
+                    label="Category"
+                    value={category}
+                    options={categoryOptions}
+                    onchange={handleCategory}>
+                </lightning-combobox>
+
+                <lightning-combobox 
+                    label="Idea Space"
+                    value={ideaSpace}
+                    options={ideaSpaceOptions}
+                    onchange={handleIdeaSpace}>
+                </lightning-combobox>
+            </div>
+
+            <lightning-input-rich-text 
+                label="Description"
+                value={description}
+                onchange={handleDesc}>
+            </lightning-input-rich-text>
+
+            <div class="btn">
+                <lightning-button 
+                    label="Submit Idea"
+                    variant="brand"
+                    onclick={save}>
+                </lightning-button>
+            </div>
+
+        </div>
+    </div>
+
+</template>

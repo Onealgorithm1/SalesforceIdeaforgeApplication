@@ -1,0 +1,131 @@
+.detail-container{
+
+    padding:30px;
+    background:#f5f7fb;
+    min-height:100vh;
+
+}
+
+.top-grid{
+
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+
+}
+
+.about-card,
+.author-card,
+.discussion-card,
+.comment-card{
+
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+
+}
+
+.author-box{
+
+    display:flex;
+    gap:15px;
+    align-items:center;
+
+}
+
+.avatar{
+
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#f4a340;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+
+}
+
+.vote-box{
+
+    margin-top:20px;
+    font-weight:bold;
+
+}
+
+.discussion-card{
+
+    margin-top:20px;
+
+}
+
+.comment-box{
+
+    width:100%;
+    min-height:120px;
+    padding:10px;
+    margin-top:15px;
+
+}
+
+.post-btn{
+
+    margin-top:15px;
+    background:#f39c12;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+
+}
+
+.comments-section{
+
+    margin-top:20px;
+
+}
+
+.comment-card{
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:16px;
+}
+
+.comment-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.comment-body{
+    margin-bottom:12px;
+}
+
+.comment-actions{
+    display:flex;
+    gap:12px;
+    margin-bottom:10px;
+}
+
+.upvote-link,
+.reply-btn{
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:#666;
+    font-weight:600;
+}
+
+.reply-box{
+    margin-top:10px;
+}
+
+.reply-textarea{
+    width:100%;
+    min-height:80px;
+}

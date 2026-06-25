@@ -1,0 +1,51 @@
+<template>
+
+    <div class="layout">
+
+        <div class="sidebar">
+
+            <div onclick={showAll}>
+                All Categories
+            </div>
+
+            <div data-name="Bugs"
+                 onclick={selectCategory}>
+                Bugs
+            </div>
+
+            <div data-name="Marketing"
+                 onclick={selectCategory}>
+                Marketing
+            </div>
+
+            <div data-name="Product"
+                 onclick={selectCategory}>
+                Product
+            </div>
+
+            <div data-name="R&D"
+                 onclick={selectCategory}>
+                R&D
+            </div>
+
+            <div data-name="Salesforce"
+                 onclick={selectCategory}>
+                Salesforce
+            </div>
+
+            <div data-name="UI"
+                 onclick={selectCategory}>
+                UI
+            </div>
+
+        </div>
+
+        <div class="boardArea">
+            <c-ideaboardall
+                selected-category={selectedCategory}>
+            </c-ideaboardall>
+        </div>
+
+    </div>
+
+</template>

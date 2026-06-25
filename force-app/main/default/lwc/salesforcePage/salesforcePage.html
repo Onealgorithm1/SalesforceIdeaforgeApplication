@@ -1,0 +1,461 @@
+<template>
+
+    <div class="roadmap-container">
+
+        <!-- HEADER -->
+
+        <div class="roadmap-header">
+
+            <div class="header-left">
+
+                <div class="roadmap-icon">
+                    ☁️
+                </div>
+
+                <div>
+                    <h1>
+                        Salesforce Roadmap
+                    </h1>
+
+                    <p>
+                        Tracking Salesforce ideas from conception to delivery.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SORT BAR -->
+
+        <div class="sort-bar">
+
+            <button class="sort-btn active">
+                DATE
+            </button>
+
+            <button class="sort-btn">
+                VOTES
+            </button>
+
+            <button class="sort-btn">
+                COMMENTS
+            </button>
+
+            <button class="sort-btn">
+                A-Z
+            </button>
+
+        </div>
+
+        <!-- BOARD -->
+
+        <div class="board-container">
+
+            <!-- IDEATION -->
+
+            <div
+                class="board-column ideation"
+                data-status="Ideation"
+                ondragover={allowDrop}
+                ondrop={handleDrop}
+                ondragenter={handleDragEnter}
+                ondragleave={handleDragLeave}>
+
+                <div class="column-header">
+
+                    <h2>Ideation</h2>
+
+                    <span>{ideationIdeas.length}</span>
+
+                </div>
+
+                <div class="column-body">
+
+                    <template for:each={ideationIdeas} for:item="idea">
+
+                        <div
+                            class="roadmap-card"
+                            key={idea.Id}
+                            draggable="true"
+                            data-id={idea.Id}
+                            ondragstart={handleDragStart}>
+
+                            <div class="card-category">
+                                Salesforce
+                            </div>
+
+                            <div
+                                class="card-clickable"
+                                data-id={idea.Id}
+                                onclick={openIdea}>
+
+                                <h3>{idea.Name}</h3>
+
+                                <p>{idea.Description__c}</p>
+
+                            </div>
+
+                            <div class="card-owner">
+                                👤 {idea.Author}
+                            </div>
+
+                            <div class="card-footer">
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="upvote"
+                                    onclick={handleVote}>
+                                    ▲
+                                </button>
+
+                                <div class="points-badge">
+                                    {idea.Points__c} PTS
+                                </div>
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="downvote"
+                                    onclick={handleVote}>
+                                    ▼
+                                </button>
+
+                                <span class="comment-count">
+                                    💬 {idea.commentCount}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </div>
+
+            <!-- DEVELOPMENT -->
+
+            <div
+                class="board-column development"
+                data-status="In Development"
+                ondragover={allowDrop}
+                ondrop={handleDrop}
+                ondragenter={handleDragEnter}
+                ondragleave={handleDragLeave}>
+
+                <div class="column-header">
+
+                    <h2>In Development</h2>
+
+                    <span>{developmentIdeas.length}</span>
+
+                </div>
+
+                <div class="column-body">
+
+                    <template for:each={developmentIdeas} for:item="idea">
+
+                        <div
+                            class="roadmap-card"
+                            key={idea.Id}
+                            draggable="true"
+                            data-id={idea.Id}
+                            ondragstart={handleDragStart}>
+
+                            <div class="card-category">
+                                Salesforce
+                            </div>
+
+                            <div
+                                class="card-clickable"
+                                data-id={idea.Id}
+                                onclick={openIdea}>
+
+                                <h3>{idea.Name}</h3>
+
+                                <p>{idea.Description__c}</p>
+
+                            </div>
+
+                            <div class="card-owner">
+                                👤 {idea.Author}
+                            </div>
+
+                            <div class="card-footer">
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="upvote"
+                                    onclick={handleVote}>
+                                    ▲
+                                </button>
+
+                                <div class="points-badge">
+                                    {idea.Points__c} PTS
+                                </div>
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="downvote"
+                                    onclick={handleVote}>
+                                    ▼
+                                </button>
+
+                                <span class="comment-count">
+                                    💬 {idea.commentCount}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </div>
+
+            <!-- QA -->
+
+            <div
+                class="board-column qa"
+                data-status="QA & Testing"
+                ondragover={allowDrop}
+                ondrop={handleDrop}
+                ondragenter={handleDragEnter}
+                ondragleave={handleDragLeave}>
+
+                <div class="column-header">
+
+                    <h2>QA & Testing</h2>
+
+                    <span>{qaIdeas.length}</span>
+
+                </div>
+
+                <div class="column-body">
+
+                    <template for:each={qaIdeas} for:item="idea">
+
+                        <div
+                            class="roadmap-card"
+                            key={idea.Id}
+                            draggable="true"
+                            data-id={idea.Id}
+                            ondragstart={handleDragStart}>
+
+                            <div class="card-category">
+                                Salesforce
+                            </div>
+
+                            <div
+                                class="card-clickable"
+                                data-id={idea.Id}
+                                onclick={openIdea}>
+
+                                <h3>{idea.Name}</h3>
+
+                                <p>{idea.Description__c}</p>
+
+                            </div>
+
+                            <div class="card-owner">
+                                👤 {idea.Author}
+                            </div>
+
+                            <div class="card-footer">
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="upvote"
+                                    onclick={handleVote}>
+                                    ▲
+                                </button>
+
+                                <div class="points-badge">
+                                    {idea.Points__c} PTS
+                                </div>
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="downvote"
+                                    onclick={handleVote}>
+                                    ▼
+                                </button>
+
+                                <span class="comment-count">
+                                    💬 {idea.commentCount}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </div>
+
+            <!-- PRODUCTION -->
+
+            <div
+                class="board-column production"
+                data-status="In Production"
+                ondragover={allowDrop}
+                ondrop={handleDrop}
+                ondragenter={handleDragEnter}
+                ondragleave={handleDragLeave}>
+
+                <div class="column-header">
+
+                    <h2>In Production</h2>
+
+                    <span>{productionIdeas.length}</span>
+
+                </div>
+
+                <div class="column-body">
+
+                    <template for:each={productionIdeas} for:item="idea">
+
+                        <div
+                            class="roadmap-card"
+                            key={idea.Id}
+                            draggable="true"
+                            data-id={idea.Id}
+                            ondragstart={handleDragStart}>
+
+                            <div class="card-category">
+                                Salesforce
+                            </div>
+
+                            <div
+                                class="card-clickable"
+                                data-id={idea.Id}
+                                onclick={openIdea}>
+
+                                <h3>{idea.Name}</h3>
+
+                                <p>{idea.Description__c}</p>
+
+                            </div>
+
+                            <div class="card-owner">
+                                👤 {idea.Author}
+                            </div>
+
+                            <div class="card-footer">
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="upvote"
+                                    onclick={handleVote}>
+                                    ▲
+                                </button>
+
+                                <div class="points-badge">
+                                    {idea.Points__c} PTS
+                                </div>
+
+                                <button
+                                    class="vote-btn"
+                                    data-id={idea.Id}
+                                    data-action="downvote"
+                                    onclick={handleVote}>
+                                    ▼
+                                </button>
+
+                                <span class="comment-count">
+                                    💬 {idea.commentCount}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL -->
+
+    <template if:true={selectedIdea}>
+
+        <section class="modal-backdrop">
+
+            <div class="modal-box">
+
+                <div
+                    class="close-btn"
+                    onclick={closeDetails}>
+                    ✕
+                </div>
+
+                <div class="detail-category">
+                    Sales / Opportunities
+                </div>
+
+                <h1 class="detail-title">
+                    {selectedIdea.Name}
+                </h1>
+
+                <p class="detail-description">
+                    {selectedIdea.Description__c}
+                </p>
+
+                <div class="comments-section">
+
+                    <h3>Comments</h3>
+
+                    <textarea
+                        class="comment-box"
+                        placeholder="Write a comment..."
+                        oninput={handleCommentChange}>
+                    </textarea>
+
+                    <button
+                        class="comment-btn"
+                        onclick={submitComment}>
+                        Add Comment
+                    </button>
+
+                    <template for:each={comments} for:item="comment">
+
+                        <div
+                            key={comment.Id}
+                            class="single-comment">
+
+                            {comment.Comment__c}
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+                <div class="detail-status">
+                    {selectedIdea.Status__c}
+                </div>
+
+            </div>
+
+        </section>
+
+    </template>
+
+</template>

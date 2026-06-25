@@ -1,0 +1,58 @@
+<template>
+
+    <div class="reply-item">
+
+        <div class="reply-header">
+
+            <strong>{reply.CreatedBy.Name}</strong>
+
+            <button onclick={handleToggle}>
+                {toggleIcon}
+            </button>
+
+        </div>
+
+        <template if:true={isExpanded}>
+
+            <p class="reply-text">
+                {reply.Reply_Text__c}
+            </p>
+
+            <div class="reply-actions">
+
+                <button onclick={handleUpvote}>
+                    👍 {reply.Upvotes__c}
+                </button>
+
+                <button onclick={handleReplyClick}>
+                    Reply
+                </button>
+
+            </div>
+
+            <template if:true={reply.childReplies}>
+
+                <div class="nested-replies">
+
+                    <template
+                        for:each={reply.childReplies}
+                        for:item="child">
+
+                        <c-reply-item
+                            key={child.Id}
+                            reply={child}
+                            onreplyclick={bubbleReply}
+                            onreplyupvote={bubbleUpvote}>
+                        </c-reply-item>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+        </template>
+
+    </div>
+
+</template>

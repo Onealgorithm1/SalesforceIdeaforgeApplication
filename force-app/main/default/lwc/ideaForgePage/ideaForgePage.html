@@ -1,0 +1,294 @@
+<template>
+
+    <!-- HEADER -->
+
+    <div class="feed-header">
+
+        <div class="header-icon">
+            ⬚
+        </div>
+
+        <div class="header-text">
+
+            <h1>Idea Forge</h1>
+
+            <p>See what's happening right now.</p>
+
+        </div>
+
+    </div>
+
+   <div class="idea-input-container">
+
+    <div class="avatar">
+        👤
+    </div>
+
+    <lightning-input
+        class="idea-input"
+        value={ideaTitle}
+        onchange={handleTitleChange}
+        placeholder="What's on your mind? Share an idea..."
+        variant="label-hidden">
+    </lightning-input>
+
+    <button
+        class="send-btn"
+        onclick={openNewIdea}>
+
+        ➤
+
+    </button>
+
+</div>
+
+    <!-- STATUS BAR -->
+
+    <div class="status-tabs">
+
+        <div
+            class="status-tab"
+            onclick={showIdeation}>
+
+            Ideation
+
+            <span>{ideationCount}</span>
+
+        </div>
+
+        <div
+            class="status-tab"
+            onclick={showDevelopment}>
+
+            In Development
+
+            <span>{developmentCount}</span>
+
+        </div>
+
+        <div
+            class="status-tab"
+            onclick={showProduction}>
+
+            In Production
+
+            <span>{productionCount}</span>
+
+        </div>
+
+    </div>
+
+    <!-- IDEA FEED -->
+
+    <div class="feed-grid">
+
+        <template
+            for:each={filteredIdeas}
+            for:item="idea">
+
+            <div
+                key={idea.Id}
+                class="feed-card">
+
+                <!-- USER INFO -->
+
+                <div class="card-user-section">
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <div class="user-info">
+
+                        <div class="user-name">
+
+                            {idea.CreatedBy.Name}
+
+                        </div>
+
+                        <div class="user-meta">
+
+                            {idea.Category__c}
+                            •
+                            OneAlgorithm
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CATEGORY -->
+
+                <div class="category-badge">
+
+                    {idea.Category__c}
+
+                </div>
+
+                <!-- TITLE -->
+
+                <div
+                    class="idea-title"
+                    data-id={idea.Id}
+                    onclick={openIdea}>
+
+                    {idea.Name}
+
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="idea-description">
+
+                    {idea.Description__c}
+
+                </div>
+
+                <!-- FOOTER -->
+
+                <div class="card-footer">
+
+                    <div class="vote-box">
+
+                        <button
+                            class="vote-btn"
+                            data-id={idea.Id}
+                            data-action="upvote"
+                            onclick={handleVote}>
+
+                            ▲
+
+                        </button>
+
+                        <span>
+
+                            {idea.Votes__c} PTS
+
+                        </span>
+
+                        <button
+                            class="vote-btn"
+                            data-id={idea.Id}
+                            data-action="downvote"
+                            onclick={handleVote}>
+
+                            ▼
+
+                        </button>
+
+                    </div>
+
+                    <div
+    class="comment-box"
+    data-id={idea.Id}
+    onclick={openIdea}>
+
+    💬 {idea.commentCount}
+
+</div>
+
+                    <div class="bookmark">
+
+                        🔖
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </template>
+
+    </div>
+
+    <!-- MODAL -->
+
+    <template if:true={selectedIdea}>
+
+        <section class="modal-backdrop">
+
+            <div class="modal-container">
+
+                <div
+                    class="close-btn"
+                    onclick={closeDetails}>
+
+                    ✕
+
+                </div>
+
+                <div class="modal-category">
+
+                    {selectedIdea.Category__c}
+
+                </div>
+
+                <h1>
+
+                    {selectedIdea.Name}
+
+                </h1>
+
+                <p>
+
+                    {selectedIdea.Description__c}
+
+                </p>
+
+                <!-- COMMENTS -->
+
+                <div class="comments-section">
+
+                    <h3>
+
+                        Comments
+
+                    </h3>
+
+                    <textarea
+                        class="comment-textarea"
+                        placeholder="Write a comment..."
+                        oninput={handleCommentChange}>
+
+                    </textarea>
+
+                    <button
+                        class="comment-btn"
+                        onclick={submitComment}>
+
+                        Add Comment
+
+                    </button>
+
+                    <template
+                        for:each={comments}
+                        for:item="comment">
+
+                        <div
+                            key={comment.Id}
+                            class="comment-card">
+
+                            <strong>
+
+                                {comment.CreatedBy.Name}
+
+                            </strong>
+
+                            <br/>
+
+                            {comment.Comment_Text__c}
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </template>
+
+</template>

@@ -1,0 +1,234 @@
+<template>
+
+    <template if:true={idea}>
+
+        <div class="detail-container">
+
+            <!-- TOP SECTION -->
+
+            <div class="top-grid">
+
+                <!-- LEFT -->
+
+                <div class="about-card">
+
+                    <h1>About this Idea</h1>
+
+                    <h2>{idea.Name}</h2>
+
+                    <p>{idea.Description__c}</p>
+
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="author-card">
+
+                    <h1>Author</h1>
+
+                    <div class="author-box">
+
+                        <div class="avatar">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3>{authorName}</h3>
+                            <span>Space Pioneer</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="vote-box">
+
+                        <span>{idea.Votes__c} PTS</span>
+
+                    </div>
+
+                </div>
+                </div>
+                <button onclick={goBack}>
+    ← Back
+</button>
+
+            <!-- COMMUNITY DISCUSSION -->
+
+            <div class="discussion-card">
+
+                <h1>Community Discussion</h1>
+
+                <textarea
+    class="comment-box"
+    placeholder="What are your thoughts?"
+    oninput={handleCommentChange}>
+</textarea>
+
+                <button
+                    class="post-btn"
+                    onclick={submitComment}>
+
+                    POST THOUGHT
+
+                </button>
+
+            </div>
+
+            <!-- COMMENTS -->
+
+            <!-- COMMENTS -->
+
+<div class="comments-section">
+
+    <h2>
+        Comments ({totalDiscussionCount})
+    </h2>
+
+    <template
+        for:each={comments}
+        for:item="comment">
+
+        <div
+            key={comment.Id}
+            class="comment-card">
+
+            <!-- COMMENT AUTHOR -->
+
+            <div class="comment-header">
+
+    <strong>
+        {comment.CreatedBy.Name}
+    </strong>
+
+    <button
+        class="toggle-btn"
+        data-id={comment.Id}
+        onclick={toggleComment}>
+
+        {comment.commentToggleIcon}
+
+    </button>
+</div>
+            <!-- COMMENT TEXT -->
+            <template if:true={comment.isCommentExpanded}>
+               <div class="comment-body">
+
+                <p>
+                    {comment.Comment_Text__c}
+                </p>
+
+            </div>
+            
+
+            <!-- COMMENT ACTIONS -->
+
+            <div class="comment-actions">
+
+    <button
+        class="upvote-link"
+        data-id={comment.Id}
+        onclick={handleCommentUpvote}>
+
+        👍 {comment.Upvotes__c}
+
+    </button>
+
+    <button
+        class="reply-btn"
+        data-id={comment.Id}
+        onclick={toggleReply}>
+
+        Reply
+
+    </button>
+
+</div>
+
+            <!-- REPLY BOX -->
+
+            <template if:true={comment.showReplyBox}>
+
+                <div class="reply-box">
+
+                    <textarea
+                        class="reply-textarea"
+                        data-id={comment.Id}
+                        onchange={handleReplyChange}
+                        placeholder="Write your reply...">
+
+                    </textarea>
+
+                    <div class="reply-actions">
+
+                        <button
+                            class="cancel-btn"
+                            data-id={comment.Id}
+                            onclick={toggleReply}>
+
+                            Cancel
+
+                        </button>
+
+                        <button
+                            class="post-reply-btn"
+                            data-id={comment.Id}
+                            onclick={postReply}>
+
+                            Post Reply
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+           <!-- REPLIES -->
+<template if:true={comment.showReplies}>
+
+    <template
+    for:each={comment.replies}
+    for:item="reply">
+
+<c-reply-item
+    key={reply.Id}
+    reply={reply}
+    onreplyclick={handleReplyClick}
+    onreplyupvote={handleReplyUpvote}>
+</c-reply-item>
+</template>
+</template>
+<template if:true={selectedReplyId}>
+
+    <div class="reply-box">
+
+        <textarea
+    value={nestedReplyText}
+    oninput={handleNestedReplyChange}>
+</textarea>
+
+        <button
+            onclick={postReplyToReply}>
+
+            Post Reply
+
+        </button>
+
+    </div>
+
+</template>
+</template> <!-- comment.isCommentExpanded -->
+
+</div> <!-- comment-card -->
+
+</template> <!-- for:each comments -->
+
+</div> <!-- comments-section -->
+
+</div> <!-- detail-container -->
+
+</template> <!-- if:true={idea} -->
+
+</template>

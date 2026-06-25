@@ -1,0 +1,172 @@
+<template>
+
+    <!-- TOP HEADER -->
+<c-top-header
+    onnewidea={openNewIdeaModal}
+    onnewevent={openNewEventModal}>
+</c-top-header>
+   
+    <div class="main-layout">
+
+        <!-- SIDEBAR -->
+
+        <div class="sidebar">
+
+            <c-sidebar-navigation
+                onnavigate={handleNavigation}>
+            </c-sidebar-navigation>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+            <!-- OVERVIEW -->
+
+            <template if:true={isOverview}>
+
+                <c-overview-page
+                    onnewidea={openNewIdeaModal}>
+                </c-overview-page>
+
+            </template>
+
+            <!-- ROADMAP -->
+
+            <template if:true={isRoadmap}>
+
+                <c-roadmap-page>
+                </c-roadmap-page>
+
+            </template>
+
+            <!-- EVENTS -->
+
+            <template if:true={isEvents}>
+
+                <c-events-page>
+                </c-events-page>
+
+            </template>
+
+            <!-- IDEA FORGE -->
+
+            <template if:true={isIdeaForge}>
+
+    <c-idea-forge-page
+    onnewidea={openNewIdeaModal}
+    onopenideadetail={openIdeaDetail}>
+</c-idea-forge-page>
+
+</template>
+
+            <!-- ONE ALGORITHM -->
+
+            <template if:true={isOneAlgorithm}>
+
+    <c-one-algorithm-page
+        onnewidea={openNewIdeaModal}>
+    </c-one-algorithm-page>
+
+</template>
+
+            <!-- BUGS -->
+
+            <template if:true={isBugs}>
+
+                <c-bugs-page>
+                </c-bugs-page>
+
+            </template>
+
+            <!-- PRODUCT -->
+
+            <template if:true={isProduct}>
+
+                <c-product-page>
+                </c-product-page>
+
+            </template>
+            <!-- SALES OPPORTUNITIES -->
+
+<template if:true={isSales}>
+
+    <c-sales-opportunities-page>
+    </c-sales-opportunities-page>
+
+</template>
+
+            <!-- SALESFORCE -->
+
+            <template if:true={isSalesforce}>
+
+                <c-salesforce-page>
+                </c-salesforce-page>
+
+            </template>
+
+            <!-- UI -->
+           <template if:true={isIdeaDetail}>
+
+    <c-idea-detail-page
+        idea-id={selectedIdeaId}
+        onback={handleBack}>
+    </c-idea-detail-page>
+
+</template>
+
+            <template if:true={isUI}>
+
+                <c-ui-page>
+                </c-ui-page>
+
+            </template>
+
+               <template if:true={ismarTech}>
+
+                <c-martech-page>
+                </c-martech-page>
+
+            </template>
+            
+               <template if:true={isaimarketingagent}>
+
+                <c-aimarketingagent-page>
+                </c-aimarketingagent-page>
+
+            </template>
+            
+
+            <!-- NEW IDEA PAGE -->
+
+<template if:true={isNewIdea}>
+
+    <c-new-idea-page
+        title-from-idea-forge={newIdeaTitle}>
+    </c-new-idea-page>
+
+</template>
+
+           <!-- NEW Event PAGE -->
+
+<!--template if:true={isEventpage}>
+
+    <c-new-event-page
+        title-from-idea-forge={newEventTitle}>
+    </c-new-event-page>
+
+</template-->
+<template if:true={isEventpage}>
+
+    <c-new-event-page>
+    </c-new-event-page>
+
+</template>
+        </div>
+
+    </div>
+
+   
+    
+</template>

@@ -1,0 +1,52 @@
+<template>
+
+    <div class="backdrop"></div>
+
+    <div class="modal-container">
+
+        <h1>
+            Create New Idea
+        </h1>
+
+        <!-- TITLE -->
+
+        <lightning-input
+            label="Idea Title"
+            onchange={handleTitle}>
+        </lightning-input>
+
+        <!-- DESCRIPTION -->
+
+        <lightning-textarea
+            label="Description"
+            onchange={handleDescription}>
+        </lightning-textarea>
+
+        <!-- CATEGORY -->
+
+        <lightning-combobox
+            label="Category"
+            options={categoryOptions}
+            onchange={handleCategory}>
+        </lightning-combobox>
+
+        <!-- BUTTONS -->
+
+        <div class="button-section">
+
+            <lightning-button
+                label="Cancel"
+                onclick={closeModal}>
+            </lightning-button>
+
+            <lightning-button
+                label="Submit"
+                variant="brand"
+                onclick={submitIdea}>
+            </lightning-button>
+
+        </div>
+
+    </div>
+
+</template>

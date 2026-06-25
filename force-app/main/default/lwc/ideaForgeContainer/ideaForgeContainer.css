@@ -1,0 +1,30 @@
+.main-layout{
+
+    display:flex;
+
+    height:calc(100vh - 72px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+    width:280px;
+
+    background:white;
+
+    border-right:1px solid #ececec;
+
+    overflow-y:auto;
+}
+
+/* CONTENT */
+
+.content{
+
+    flex:1;
+
+    background:#f5f7fb;
+
+    overflow:auto;
+}

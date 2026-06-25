@@ -1,0 +1,235 @@
+.sidebar-container{
+
+    width:260px;
+
+    height:100vh;
+
+    background:white;
+
+    border-right:1px solid #ececec;
+
+    overflow-y:auto;
+}
+
+/* LOGO */
+
+.logo-section{
+
+    padding:24px;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+}
+
+.idea-text{
+
+    color:#1b2b65;
+}
+
+.forge-text{
+
+    color:#ff8a00;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+
+    padding:18px 24px;
+
+    font-size:12px;
+
+    color:#999;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+}
+
+/* MENU ITEM */
+
+.menu-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin:10px 16px;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    color:#666;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+/* ACTIVE */
+
+.menu-item.active{
+
+    background:#fff3e8;
+
+    color:#ff8a00;
+
+    border-left:4px solid #ff8a00;
+}
+
+/* HOVER */
+
+.menu-item:hover{
+
+    background:#fff7f0;
+
+    color:#ff8a00;
+}
+
+/* ICON COLOR */
+
+.menu-item lightning-icon{
+
+    --slds-c-icon-color-foreground-default: currentColor;
+}
+
+/* ORGANIZATION */
+
+.organization-box{
+
+    margin:24px 16px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#f9f9f9;
+
+    border:1px solid #ececec;
+}
+
+/* ORGANIZATION LABEL */
+
+.org-label{
+
+    font-size:11px;
+
+    color:#999;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+}
+
+/* ORGANIZATION NAME */
+
+.org-name{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#1b2b65;
+}
+.workspace-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* floating popup */
+.org-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    width: 180px;
+    z-index: 9999;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.menu-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #f3f3f3;
+}
+.org-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 999;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #f4f6f9;
+}
+
+.default-org-icon {
+    --slds-c-icon-color-foreground-default: #1b5297;
+}
+
+.create-workspace-icon {
+    --slds-c-icon-color-foreground-default: #2e844a;
+}
+.create-workspace-icon {
+    --slds-c-icon-color-foreground-default: #2e844a;
+}
+
+.create-workspace-text {
+    color: #2e844a;
+    font-weight: 600;
+}
+.create-workspace-text {
+    color: #2e844a;
+    font-weight: 700;
+}
+.org-menu {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    width: 220px;
+    padding: 6px 0;
+}
+
+.menu-header {
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b6b6b;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 4px;
+}
+.active-orange {
+    background: #fff3e0;
+    border-left: 4px solid orange;
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.6);
+    border-radius: 6px;
+}

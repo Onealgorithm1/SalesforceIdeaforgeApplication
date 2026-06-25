@@ -1,0 +1,49 @@
+.nested-replies {
+    margin-left: 40px;
+    border-left: 2px solid #ddd;
+    padding-left: 15px;
+    margin-top: 10px;
+}
+.reply-item {
+
+    padding: 10px 0;
+
+}
+
+.reply-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.reply-text {
+
+    margin: 6px 0;
+
+}
+
+.reply-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 4px;
+
+}
+
+.nested-replies {
+
+    margin-left: 24px;
+
+    padding-left: 16px;
+
+    border-left: 2px solid #e5e7eb;
+
+    margin-top: 10px;
+
+}

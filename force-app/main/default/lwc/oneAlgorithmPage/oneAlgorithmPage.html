@@ -1,0 +1,209 @@
+<template>
+
+    <!-- SHOW FEED -->
+
+    <template if:false={showIdeaDetail}>
+
+        <!-- HEADER -->
+
+        <div class="feed-header">
+
+            <div class="header-icon">
+                ⬚
+            </div>
+
+            <div class="header-text">
+
+                <h1>One Algorithm</h1>
+
+                <p>See what's happening right now.</p>
+
+            </div>
+
+        </div>
+
+        <!-- IDEA INPUT -->
+
+        <div class="idea-input-container">
+
+            <div class="avatar">
+                👤
+            </div>
+
+            <lightning-input
+                class="idea-input"
+                value={ideaTitle}
+                onchange={handleTitleChange}
+                placeholder="What's on your mind? Share an idea..."
+                variant="label-hidden">
+            </lightning-input>
+
+            <button
+                class="send-btn"
+                onclick={openNewIdea}>
+
+                ➤
+
+            </button>
+
+        </div>
+
+        <!-- STATUS BAR -->
+
+        <div class="status-tabs">
+
+            <div
+                class="status-tab"
+                onclick={showIdeation}>
+
+                Ideation
+
+                <span>{ideationCount}</span>
+
+            </div>
+
+            <div
+                class="status-tab"
+                onclick={showDevelopment}>
+
+                In Development
+
+                <span>{developmentCount}</span>
+
+            </div>
+
+            <div
+                class="status-tab"
+                onclick={showProduction}>
+
+                In Production
+
+                <span>{productionCount}</span>
+
+            </div>
+
+        </div>
+
+        <!-- IDEA FEED -->
+
+        <div class="feed-grid">
+
+            <template
+                for:each={filteredIdeas}
+                for:item="idea">
+
+                <div
+                    key={idea.Id}
+                    class="feed-card">
+
+                    <div class="card-user-section">
+
+                        <div class="user-avatar">
+                            👤
+                        </div>
+
+                        <div class="user-info">
+
+                            <div class="user-name">
+                                {idea.CreatedBy.Name}
+                            </div>
+
+                            <div class="user-meta">
+
+                                {idea.Category__c}
+                                •
+                                OneAlgorithm
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="category-badge">
+
+                        {idea.Category__c}
+
+                    </div>
+
+                    <div
+                        class="idea-title"
+                        data-id={idea.Id}
+                        onclick={openIdea}>
+
+                        {idea.Name}
+
+                    </div>
+
+                    <div class="idea-description">
+
+                        {idea.Description__c}
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <div class="vote-box">
+
+                            <button
+                                class="vote-btn"
+                                data-id={idea.Id}
+                                data-action="upvote"
+                                onclick={handleVote}>
+
+                                ▲
+
+                            </button>
+
+                            <span>
+
+                                {idea.Votes__c} PTS
+
+                            </span>
+
+                            <button
+                                class="vote-btn"
+                                data-id={idea.Id}
+                                data-action="downvote"
+                                onclick={handleVote}>
+
+                                ▼
+
+                            </button>
+
+                        </div>
+
+                        <div class="comment-box">
+
+                            💬 {idea.commentCount}
+
+                        </div>
+
+                        <div class="bookmark">
+
+                            🔖
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </template>
+
+    <!-- SHOW IDEA DETAIL PAGE -->
+
+    <template if:true={showIdeaDetail}>
+
+        <c-idea-detail-page
+            idea-id={selectedIdeaId}
+            onback={handleBack}>
+        </c-idea-detail-page>
+
+    </template>
+
+</template>

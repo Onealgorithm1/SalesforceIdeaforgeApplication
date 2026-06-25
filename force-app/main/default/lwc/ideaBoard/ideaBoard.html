@@ -1,0 +1,8 @@
+<template>
+    <template for:each={ideas} for:item="i">
+        <div key={i.Id} class="card">
+            <h3>{i.Name}</h3>
+            <p>{i.Description__c}</p>
+        </div>
+    </template>
+</template>

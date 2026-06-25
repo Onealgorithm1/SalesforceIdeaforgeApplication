@@ -1,0 +1,279 @@
+<template>
+
+    <div class="initiative-container">
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-header">
+
+            <div class="icon-box">
+
+                ✨
+
+            </div>
+
+            <div>
+
+                <h1>
+                    New Initiative
+                </h1>
+
+                <p>
+                    Share your innovation with the workspace
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- MAIN GRID -->
+
+        <div class="main-grid">
+
+            <!-- LEFT SECTION -->
+
+            <div class="left-section">
+
+                <!-- TITLE -->
+
+                <div class="card">
+
+                    <label>
+                        INITIATIVE TITLE
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Give your idea a powerful, clear name..."
+                        class="title-input"
+                        value={title}
+                        onchange={handleTitle}>
+
+                    <template if:true={titleError}>
+
+                        <p class="error-text">
+
+                            {titleError}
+
+                        </p>
+
+                    </template>
+
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="card large-card">
+
+                    <label>
+                        VISION & DETAIL
+                    </label>
+
+                  <textarea
+    placeholder="Describe the problem, solution and impact..."
+    class="description-box"
+    value={description}
+    onchange={handleDescription}>
+</textarea>
+
+                    <template if:true={descriptionError}>
+
+                        <p class="error-text">
+
+                            {descriptionError}
+
+                        </p>
+
+                    </template>
+
+                </div>
+
+                <!-- TAGS -->
+
+                <div class="card">
+
+                    <label>
+                        KEYWORDS / TAGS
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="e.g automation, cloud, growth"
+                        class="tag-input">
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SECTION -->
+
+            <div class="right-section">
+
+                <!-- USER CARD -->
+
+                <div class="side-card">
+
+                    <div class="user-box">
+
+                        <div class="avatar">
+
+                            👤
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                {loggedInUser}
+
+                            </h3>
+
+                            <span>
+
+                                INITIATOR
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CATEGORY -->
+
+                <div class="side-card">
+
+                    <label>
+                        CATEGORY
+                    </label>
+
+                    <select
+    class="dropdown"
+    value={category}
+    onchange={handleCategory}>
+
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="Bugs">
+                            Bugs
+                        </option>
+
+                        <option value="Product">
+                            Product
+                        </option>
+
+                        <option value="Sales/Opportunities">
+                            Sales/Opportunities
+                        </option>
+
+                        <option value="Salesforce">
+                            Salesforce
+                        </option>
+
+                        <option value="UI">
+                            UI
+                        </option>
+
+                        <option value="MarTech">
+                            MarTech
+                        </option>
+                        <option value="AI Marketing Agent">
+                            AI Marketing Agent
+                        </option>
+
+                    </select>
+
+                    <template if:true={categoryError}>
+
+                        <p class="error-text">
+
+                            {categoryError}
+
+                        </p>
+
+                    </template>
+
+                </div>
+
+                <!-- IDEA SPACE -->
+
+                <div class="side-card">
+
+                    <label>
+                        IDEA SPACE
+                    </label>
+
+                    <select
+    class="dropdown"
+    value={ideaSpace}
+    onchange={handleIdeaSpace}>
+
+    <option value="">
+        Select a space
+    </option>
+
+    <option value="IdeaForge">
+        Idea Forge
+    </option>
+
+    <option value="OneAlgorithm">
+        One Algorithm
+    </option>
+
+</select>
+
+                    <template if:true={ideaSpaceError}>
+
+                        <p class="error-text">
+
+                            {ideaSpaceError}
+
+                        </p>
+
+                    </template>
+
+                </div>
+
+                <!-- FILE UPLOAD -->
+
+<div class="side-card">
+
+    <label>
+        SUPPORTING FILES
+    </label>
+
+    <div class="custom-upload">
+
+        <lightning-file-upload
+            label=""
+            name="fileUploader"
+            record-id={recordId}
+            multiple>
+
+        </lightning-file-upload>
+
+    </div>
+
+</div>
+
+                <!-- PUBLISH BUTTON -->
+
+               <button
+    class="publish-btn"
+    onclick={publishIdea}>
+
+    Publish Initiative
+
+</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>

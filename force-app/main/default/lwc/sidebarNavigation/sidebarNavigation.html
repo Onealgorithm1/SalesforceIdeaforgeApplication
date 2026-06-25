@@ -1,0 +1,314 @@
+<template>
+
+    <div class="sidebar-container">
+
+        <!-- LOGO -->
+
+        <div class="logo-section">
+
+            <span class="idea-text">
+                Idea
+            </span>
+
+            <span class="forge-text">
+                Forge
+            </span>
+
+        </div>
+
+        <!-- MENU -->
+
+        <div class="section-title">
+
+            MENU
+
+        </div>
+
+        <!-- OVERVIEW -->
+
+        <div
+            class={overviewClass}
+            onclick={openOverview}>
+
+            <lightning-icon
+                icon-name="utility:home"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Overview
+            </span>
+
+        </div>
+
+        <!-- ROADMAP -->
+
+        <div
+            class={roadmapClass}
+            onclick={openRoadmap}>
+
+            <lightning-icon
+                icon-name="utility:trail"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Roadmap
+            </span>
+
+        </div>
+
+        <!-- IDEA SPACES -->
+
+        <div class="section-title">
+
+            IDEA SPACES
+
+        </div>
+
+        <!-- EVENTS -->
+
+        <div
+            class={eventsClass}
+            onclick={openEvents}>
+
+            <lightning-icon
+                icon-name="utility:event"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Events
+            </span>
+
+        </div>
+
+        <!-- IDEA FORGE -->
+
+        <div
+            class={ideaForgeClass}
+            onclick={openIdeaForge}>
+
+            <lightning-icon
+                icon-name="utility:apps"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Idea Forge
+            </span>
+
+        </div>
+
+        <!-- ONE ALGORITHM -->
+
+        <div
+            class={oneAlgoClass}
+            onclick={openOneAlgo}>
+
+            <lightning-icon
+                icon-name="utility:apps"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                One Algorithm
+            </span>
+
+        </div>
+
+        <!-- CATEGORIES -->
+
+        <div class="section-title">
+
+            CATEGORIES
+
+        </div>
+
+        <!-- ALL CATEGORIES -->
+
+        <div
+            class={allCategoriesClass}
+            onclick={openAllCategories}>
+
+            <lightning-icon
+                icon-name="utility:tags"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                All Categories
+            </span>
+
+        </div>
+
+        <!-- BUGS -->
+
+        <div
+            class={bugsClass}
+            onclick={openBugs}>
+
+            <lightning-icon
+                icon-name="utility:bug"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Bugs
+            </span>
+
+        </div>
+
+        <!-- PRODUCT -->
+
+        <div
+            class={productClass}
+            onclick={openProduct}>
+
+            <lightning-icon
+                icon-name="utility:product"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Product
+            </span>
+
+        </div>
+
+        <!-- SALES -->
+
+        <div
+            class={salesClass}
+            onclick={openSales}>
+
+            <lightning-icon
+                icon-name="utility:salesforce1"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Sales/Opportunities
+            </span>
+
+        </div>
+
+        <!-- SALESFORCE -->
+
+        <div
+            class={salesforceClass}
+            onclick={openSalesforce}>
+
+            <lightning-icon
+                icon-name="utility:apps"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                Salesforce
+            </span>
+
+        </div>
+
+        <!-- UI -->
+
+        <div
+            class={uiClass}
+            onclick={openUI}>
+
+            <lightning-icon
+                icon-name="utility:brush"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                UI
+            </span>
+
+        </div>
+         <!-- MarTech -->
+
+        <div
+            class={martechClass}
+            onclick={openMarTech}>
+
+            <lightning-icon
+                icon-name="utility:chart"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                MarTech
+            </span>
+
+        </div>
+        
+
+         <!-- AI Marketing Agent -->
+
+        <div
+            class={aimarketingagent}
+            onclick={openAIMarketingAgent}>
+
+            <lightning-icon
+                icon-name="utility:bookmark"
+                size="small">
+            </lightning-icon>
+
+            <span>
+                AI Marketing Agent
+            </span>
+
+        </div>
+        
+
+        <!-- ORGANIZATION -->
+    <div class="workspace-wrapper">
+
+       <div class="organization-box" onclick={toggleWorkspaceMenu}>
+
+    <div class="org-label">
+        WORKSPACE
+    </div>
+
+    <div class="org-name">
+        OneAlgo
+    </div>
+
+</div>
+
+<!-- Dropdown Menu -->
+<template if:true={showWorkspaceMenu}>
+    <div class="org-menu">
+        <div class="menu-header">
+            Your Workspaces
+        </div>
+
+        <div class="menu-item" onclick={goToDefaultOrg}>
+            <lightning-icon
+                icon-name="standard:account"
+                size="x-small"
+                class="default-org-icon">
+            </lightning-icon>
+            
+            <span>Default Organization</span>
+        </div>
+
+        <div class="menu-item" onclick={goToCreateWorkspace}>
+                <lightning-icon
+                icon-name="utility:add"
+                size="x-small"
+                class="create-workspace-icon">
+            </lightning-icon>
+
+            <span class="create-workspace-text" >
+                Create Workspace</span>
+        </div>
+
+    </div>
+</template>
+
+    </div>
+    </div>
+
+</template>

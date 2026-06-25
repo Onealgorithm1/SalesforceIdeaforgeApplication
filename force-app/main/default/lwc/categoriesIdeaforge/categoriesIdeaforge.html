@@ -1,0 +1,198 @@
+<template>
+
+    <!-- HEADER -->
+
+    <div class="feed-header">
+
+        <div class="header-icon">
+            💡
+        </div>
+
+        <div class="header-text">
+
+            <h1>Home Feed</h1>
+
+            <p>See what's happening across all Idea Spaces.</p>
+
+        </div>
+
+    </div>
+
+    <!-- CREATE IDEA -->
+
+    <div class="idea-input-container">
+
+        <div class="avatar">
+            👤
+        </div>
+
+        <div
+            class="idea-input"
+            onclick={openNewIdea}>
+
+            What's on your mind? Share an idea...
+
+        </div>
+
+        <button
+            class="send-btn"
+            onclick={openNewIdea}>
+
+            ➤
+
+        </button>
+
+    </div>
+
+    <!-- STATUS TABS -->
+
+    <div class="status-tabs">
+
+        <div
+            class="status-tab"
+            onclick={showIdeation}>
+
+            Ideation
+
+            <span>{ideationCount}</span>
+
+        </div>
+
+        <div
+            class="status-tab"
+            onclick={showDevelopment}>
+
+            In Development
+
+            <span>{developmentCount}</span>
+
+        </div>
+
+        <div
+            class="status-tab"
+            onclick={showProduction}>
+
+            In Production
+
+            <span>{productionCount}</span>
+
+        </div>
+
+    </div>
+
+    <!-- FEED -->
+
+    <div class="feed-grid">
+
+        <template
+            for:each={filteredIdeas}
+            for:item="idea">
+
+            <div
+                key={idea.Id}
+                class="feed-card">
+
+                <!-- USER -->
+
+                <div class="card-user-section">
+
+                    <div class="user-avatar">
+                        👤
+                    </div>
+
+                    <div class="user-info">
+
+                        <div class="user-name">
+
+                            {idea.CreatedBy.Name}
+
+                        </div>
+
+                        <div class="user-meta">
+
+                            {idea.Category__c}
+                            •
+                            {idea.Idea_Space__c}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CATEGORY -->
+
+                <div class="category-badge">
+
+                    {idea.Category__c}
+
+                </div>
+
+                <!-- TITLE -->
+
+                <div
+                    class="idea-title"
+                    data-id={idea.Id}
+                    onclick={openIdea}>
+
+                    {idea.Name}
+
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="idea-description">
+
+                    {idea.Description__c}
+
+                </div>
+
+                <!-- FOOTER -->
+
+                <div class="card-footer">
+
+                    <div class="vote-box">
+
+                        <button
+                            class="vote-btn"
+                            data-id={idea.Id}
+                            data-action="upvote"
+                            onclick={handleVote}>
+
+                            ▲
+
+                        </button>
+
+                        <span>
+
+                            {idea.Votes__c} PTS
+
+                        </span>
+
+                        <button
+                            class="vote-btn"
+                            data-id={idea.Id}
+                            data-action="downvote"
+                            onclick={handleVote}>
+
+                            ▼
+
+                        </button>
+
+                    </div>
+
+                    <div class="comment-box">
+
+                        💬 {idea.commentCount}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </template>
+
+    </div>
+
+</template>

@@ -1,0 +1,62 @@
+<template>
+
+    <div class="top-section">
+
+        <lightning-button
+            label="NEW EVENT"
+            icon-name="utility:add"
+            variant="brand"
+            onclick={openModal}>
+        </lightning-button>
+
+    </div>
+
+    <div class="event-grid">
+
+        <template
+            for:each={events}
+            for:item="event">
+
+            <div
+                key={event.Id}
+                class="event-card"
+                data-id={event.Id}
+                onclick={openEvent}>
+
+                <img
+                    src={event.Cover_Image_URL__c}
+                    class="cover">
+
+                <div class="body">
+
+                    <div class="badge">
+                        {event.Event_Type__c}
+                    </div>
+
+                    <h2>
+                        {event.Name}
+                    </h2>
+
+                    <p>
+                        {event.Description__c}
+                    </p>
+
+                    <div class="footer">
+
+                        📅
+                        {event.Event_Date_Time__c}
+
+                        📍
+                        {event.Event_Location__c}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </template>
+
+    </div>
+
+</template>

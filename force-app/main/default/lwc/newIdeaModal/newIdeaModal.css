@@ -1,0 +1,111 @@
+.backdrop{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.4);
+
+    z-index:100;
+}
+
+/* MODAL */
+
+.modal-container{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:500px;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    z-index:101;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.modal-container h1{
+
+    font-size:28px;
+
+    margin-bottom:25px;
+}
+
+/* INPUT */
+
+.input-box,
+.textarea-box{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #ddd;
+
+    border-radius:14px;
+
+    margin-bottom:20px;
+
+    font-size:15px;
+}
+
+.textarea-box{
+
+    height:140px;
+
+    resize:none;
+}
+
+/* BUTTONS */
+
+.button-section{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:14px;
+}
+
+.cancel-btn{
+
+    background:#ececec;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+}
+
+.submit-btn{
+
+    background:#ff8a00;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}

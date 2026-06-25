@@ -1,0 +1,327 @@
+<template>
+
+    <!-- BOARD VIEW -->
+    <template if:false={isDetailView}>
+
+        <div class="board">
+
+            <!-- IDEATION -->
+            <div class="column"
+                 data-status="Ideation"
+                 ondragover={allowDrop}
+                 ondrop={handleDrop}>
+
+                <h2>Ideation ({ideationCount})</h2>
+
+                <template for:each={ideation} for:item="idea">
+                    <div key={idea.Id}
+                         class="card"
+                         draggable="true"
+                         data-id={idea.Id}
+                         ondragstart={handleDragStart}>
+
+                        <!-- ONLY TITLE CLICK OPENS DETAIL -->
+                        <h3 class="ideaTitle"
+                            data-id={idea.Id}
+                            onclick={openDetail}>
+                            <b>{idea.Name}</b>
+                        </h3>
+
+                        <div class="meta">
+                            <span class="category">{idea.Category__c}</span>
+                            <span class="tags">{idea.Tags__c}</span>
+                        </div>
+
+                        <p>{idea.Description__c}</p>
+
+                        <div class="footer">
+
+                            <!-- LIKE / UNLIKE -->
+                            <div>
+                                <button data-id={idea.Id}
+                                        onclick={handleLike}>
+                                    👍
+                                </button>
+
+                                {idea.Likes__c}
+
+                                <button data-id={idea.Id}
+                                        onclick={handleUnlike}>
+                                    👎
+                                </button>
+                            </div>
+
+                            <!-- COMMENT -->
+                            <div>
+                                💬 {idea.commentCount}
+
+                                <button data-id={idea.Id}
+                                        onclick={openComment}>
+                                    Add
+                                </button>
+                            </div>
+
+                            <!-- AUTHOR -->
+                            <div>
+                                👤 {idea.Author}
+                            </div>
+
+                            <!-- POINTS -->
+                            <div class="points">
+                                {idea.Points__c} pts
+                            </div>
+
+                        </div>
+
+                    </div>
+                </template>
+            </div>
+
+            <!-- DEVELOPMENT -->
+            <div class="column dev"
+                 data-status="In Development"
+                 ondragover={allowDrop}
+                 ondrop={handleDrop}>
+
+                <h2>In Development ({developmentCount})</h2>
+
+                <template for:each={development} for:item="idea">
+                    <div key={idea.Id}
+                         class="card"
+                         draggable="true"
+                         data-id={idea.Id}
+                         ondragstart={handleDragStart}>
+
+                        <!-- ONLY TITLE CLICK OPENS DETAIL -->
+                        <h3 class="ideaTitle"
+                            data-id={idea.Id}
+                            onclick={openDetail}>
+                            {idea.Name}
+                        </h3>
+
+                        <div class="meta">
+                            <span class="category">{idea.Category__c}</span>
+                            <span class="tags">{idea.Tags__c}</span>
+                        </div>
+
+                        <p>{idea.Description__c}</p>
+
+                        <div class="footer">
+
+                            <!-- LIKE / UNLIKE -->
+                            <div>
+                                <button data-id={idea.Id}
+                                        onclick={handleLike}>
+                                    👍
+                                </button>
+
+                                {idea.Likes__c}
+
+                                <button data-id={idea.Id}
+                                        onclick={handleUnlike}>
+                                    👎
+                                </button>
+                            </div>
+
+                            <!-- COMMENT -->
+                            <div>
+                                💬 {idea.commentCount}
+
+                                <button data-id={idea.Id}
+                                        onclick={openComment}>
+                                    Add
+                                </button>
+                            </div>
+
+                            <!-- AUTHOR -->
+                            <div>
+                                👤 {idea.Author}
+                            </div>
+
+                            <!-- POINTS -->
+                            <div class="points">
+                                {idea.Points__c} pts
+                            </div>
+
+                        </div>
+
+                    </div>
+                </template>
+            </div>
+
+            <!-- PRODUCTION -->
+            <div class="column prod"
+                 data-status="In Production"
+                 ondragover={allowDrop}
+                 ondrop={handleDrop}>
+
+                <h2>In Production ({productionCount})</h2>
+
+                <template for:each={production} for:item="idea">
+                    <div key={idea.Id}
+                         class="card"
+                         draggable="true"
+                         data-id={idea.Id}
+                         ondragstart={handleDragStart}>
+
+                        <!-- ONLY TITLE CLICK OPENS DETAIL -->
+                        <h3 class="ideaTitle"
+                            data-id={idea.Id}
+                            onclick={openDetail}>
+                            {idea.Name}
+                        </h3>
+
+                        <div class="meta">
+                            <span class="category">{idea.Category__c}</span>
+                            <span class="tags">{idea.Tags__c}</span>
+                        </div>
+
+                        <p>{idea.Description__c}</p>
+
+                        <div class="footer">
+
+                            <!-- LIKE / UNLIKE -->
+                            <div>
+                                <button data-id={idea.Id}
+                                        onclick={handleLike}>
+                                    👍
+                                </button>
+
+                                {idea.Likes__c}
+
+                                <button data-id={idea.Id}
+                                        onclick={handleUnlike}>
+                                    👎
+                                </button>
+                            </div>
+
+                            <!-- COMMENT -->
+                            <div>
+                                💬 {idea.commentCount}
+
+                                <button data-id={idea.Id}
+                                        onclick={openComment}>
+                                    Add
+                                </button>
+                            </div>
+
+                            <!-- AUTHOR -->
+                            <div>
+                                👤 {idea.Author}
+                            </div>
+
+                            <!-- POINTS -->
+                            <div class="points">
+                                {idea.Points__c} pts
+                            </div>
+
+                        </div>
+
+                    </div>
+                </template>
+            </div>
+
+        </div>
+
+        <!-- COMMENT POPUP -->
+        <template if:true={showComment}>
+            <div class="popup">
+
+                <textarea
+                    placeholder="Write comment..."
+                    onchange={handleComment}>
+                </textarea>
+
+                <button onclick={saveComment}>
+                    Save
+                </button>
+
+            </div>
+        </template>
+
+    </template>
+
+    <!-- DETAIL VIEW -->
+    <template if:true={isDetailView}>
+
+        <div class="detail">
+
+            <!-- BACK -->
+            <button onclick={goBack}>
+                ⬅ Back
+            </button>
+
+            <!-- IDEA TITLE -->
+            <h1>{selectedIdea.Name}</h1>
+
+            <!-- META -->
+            <div class="meta">
+                <span class="category">
+                    {selectedIdea.Category__c}
+                </span>
+
+                <span class="tags">
+                    {selectedIdea.Tags__c}
+                </span>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <p>{selectedIdea.Description__c}</p>
+
+            <!-- DETAIL FOOTER -->
+            <div class="footer">
+
+                <div>
+                    <button data-id={selectedIdea.Id}
+                            onclick={handleLike}>
+                        👍
+                    </button>
+
+                    {selectedIdea.Likes__c}
+
+                    <button data-id={selectedIdea.Id}
+                            onclick={handleUnlike}>
+                        👎
+                    </button>
+                </div>
+
+                <div class="points">
+                    {selectedIdea.Points__c} pts
+                </div>
+
+                <div>
+                    👤 {selectedIdea.Author}
+                </div>
+
+            </div>
+
+            <hr />
+
+            <!-- COMMENTS -->
+            <h3>Discussion</h3>
+
+            <template for:each={comments} for:item="c">
+                <div key={c.Id} class="comment">
+
+                    <b>{c.CreatedBy.Name}</b>
+
+                    <p>{c.Comment__c}</p>
+
+                </div>
+            </template>
+
+            <!-- ADD COMMENT -->
+            <textarea
+                placeholder="Write comment..."
+                onchange={handleComment}>
+            </textarea>
+
+            <button onclick={saveComment}>
+                Post
+            </button>
+
+        </div>
+
+    </template>
+
+</template>

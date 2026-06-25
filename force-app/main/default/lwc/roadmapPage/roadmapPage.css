@@ -1,0 +1,751 @@
+.roadmap-container{
+
+    padding:32px;
+
+    background:#f5f7fb;
+
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.roadmap-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+}
+
+/* LEFT HEADER */
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+/* ICON */
+
+.roadmap-icon{
+
+    width:64px;
+
+    height:64px;
+
+    border-radius:20px;
+
+    background:#fff3e8;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+}
+
+/* HEADER TITLE */
+
+.header-left h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#1b2b65;
+
+    margin-bottom:4px;
+}
+
+.header-left p{
+
+    font-size:15px;
+
+    color:#777;
+}
+
+/* SORT BAR */
+
+.sort-bar{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-bottom:28px;
+}
+
+/* SORT BUTTON */
+
+.sort-btn{
+
+    border:none;
+
+    background:white;
+
+    padding:10px 20px;
+
+    border-radius:14px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#666;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sort-btn:hover{
+
+    background:#ff8a00;
+
+    color:white;
+}
+
+.sort-btn.active{
+
+    background:#ff8a00;
+
+    color:white;
+}
+
+/* BOARD */
+
+.board-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    gap:22px;
+
+    align-items:start;
+}
+
+/* COLUMN */
+
+.board-column{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:18px;
+
+    min-height:700px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:0 2px 12px rgba(0,0,0,0.05);
+}
+
+/* COLUMN HEADER */
+
+.column-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.column-header h2{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#1b2b65;
+}
+
+.column-header span{
+
+    width:30px;
+
+    height:30px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    background:#f4f4f4;
+
+    color:#666;
+}
+
+/* COLUMN BODY */
+
+.column-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    max-height:650px;
+
+    overflow-y:auto;
+
+    padding-right:6px;
+
+    transition:0.2s;
+}
+
+/* STATUS COLORS */
+
+/* STATUS COLUMN COLORS */
+
+.ideation{
+
+    background:#fdf4ef;
+
+}
+
+.development{
+
+    background:#fdf8ef;
+
+}
+
+.qa{
+
+    background:#faf8ef;
+
+}
+
+.production{
+
+    background:#eef8f1;
+
+}
+/* ROADMAP CARD */
+
+.roadmap-card{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+
+    transition:0.3s;
+
+    border:1px solid #f1f1f1;
+
+}
+
+.roadmap-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 8px 24px rgba(0,0,0,0.12);
+
+}
+/* CARD HOVER */
+
+.roadmap-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* CATEGORY */
+
+.card-category{
+
+    display:inline-block;
+
+    background:#fff3e8;
+
+    color:#ff8a00;
+
+    padding:6px 14px;
+
+    border-radius:18px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+}
+
+/* TITLE */
+
+.roadmap-card h3{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#1b2b65;
+
+    margin-bottom:12px;
+
+    line-height:1.4;
+}
+
+/* DESCRIPTION */
+
+.roadmap-card p{
+
+    font-size:14px;
+
+    color:#666;
+
+    line-height:1.7;
+
+    margin-bottom:18px;
+}
+
+/* FOOTER */
+
+.card-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-size:13px;
+
+    color:#777;
+
+    font-weight:600;
+}
+
+/* MODAL BACKDROP */
+
+.modal-backdrop{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,0.5);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:999;
+}
+
+/* MODAL BOX */
+
+.modal-box{
+
+    width:650px;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:36px;
+
+    position:relative;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* CLOSE */
+
+.close-btn{
+
+    position:absolute;
+
+    top:18px;
+
+    right:22px;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    color:#888;
+
+    transition:0.3s;
+}
+
+.close-btn:hover{
+
+    color:#ff8a00;
+}
+
+/* DETAIL CATEGORY */
+
+.detail-category{
+
+    display:inline-block;
+
+    background:#fff3e8;
+
+    color:#ff8a00;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+}
+
+/* DETAIL TITLE */
+
+.detail-title{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#1b2b65;
+
+    margin-bottom:20px;
+
+    line-height:1.4;
+}
+
+/* DETAIL DESCRIPTION */
+
+.detail-description{
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    color:#555;
+
+    margin-bottom:28px;
+}
+
+/* DETAIL STATUS */
+
+.detail-status{
+
+    display:inline-block;
+
+    background:#e8f5e9;
+
+    color:#2e7d32;
+
+    padding:10px 18px;
+
+    border-radius:22px;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+/* DRAG HOVER EFFECT */
+
+.drag-hover{
+
+    background:#fff3e8;
+
+    border:2px dashed #ff8a00;
+
+    border-radius:18px;
+
+    transition:0.2s;
+}
+
+/* DRAGGING CARD */
+
+.roadmap-card:active{
+
+    cursor:grabbing;
+
+    opacity:0.8;
+}
+/* COMMENTS SECTION */
+
+.comments-section{
+
+    margin-top:30px;
+}
+
+/* COMMENTS TITLE */
+
+.comments-section h3{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#1b2b65;
+
+    margin-bottom:18px;
+}
+
+/* COMMENT INPUT */
+
+.comment-box{
+
+    width:100%;
+
+    min-height:110px;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:18px;
+
+    padding:16px;
+
+    font-size:14px;
+
+    background:#fafafa;
+
+    resize:none;
+
+    outline:none;
+
+    transition:0.3s;
+
+    margin-bottom:16px;
+
+    font-family:inherit;
+}
+
+/* INPUT FOCUS */
+
+.comment-box:focus{
+
+    border:1px solid #ff8a00;
+
+    background:white;
+
+    box-shadow:0 0 0 4px rgba(255,138,0,0.1);
+}
+
+/* COMMENT BUTTON */
+
+.comment-btn{
+
+    border:none;
+
+    background:#ff8a00;
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    margin-bottom:24px;
+}
+
+/* BUTTON HOVER */
+
+.comment-btn:hover{
+
+    background:#f57c00;
+
+    transform:translateY(-2px);
+}
+
+/* SINGLE COMMENT */
+
+.single-comment{
+
+    background:#f5f7fb;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    margin-bottom:14px;
+
+    font-size:14px;
+
+    color:#444;
+
+    line-height:1.7;
+
+    border:1px solid #ececec;
+}
+
+/* COMMENT HOVER */
+
+.single-comment:hover{
+
+    background:white;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+/* CARD OWNER */
+
+/* CARD OWNER */
+
+.card-owner{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:16px;
+
+    padding-top:12px;
+
+    border-top:1px solid #f0f0f0;
+
+    font-size:13px;
+
+    color:#666;
+
+    font-weight:600;
+
+}
+
+/* CARD FOOTER */
+
+/* CARD FOOTER */
+
+.card-footer{
+
+    margin-top:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+/* VOTE BUTTON */
+
+/* VOTE BUTTON */
+
+.vote-btn{
+
+    border:none;
+
+    background:#f5f7fb;
+
+    width:32px;
+
+    height:32px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    transition:0.2s;
+
+}
+
+.vote-btn:hover{
+
+    background:#ff8a00;
+
+    color:white;
+
+}
+
+/* VOTE HOVER */
+
+.vote-btn:hover{
+
+    background:#ff8a00;
+
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+/* POINTS BADGE */
+
+./* POINTS BADGE */
+/* POINTS BADGE */
+
+.points-badge{
+
+    background:#fff3e8;
+
+    color:#ff8a00;
+
+    padding:8px 12px;
+
+    border-radius:12px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+/* COMMENT COUNT */
+
+/* COMMENT COUNT */
+
+.comment-count{
+
+    background:#f5f7fb;
+
+    padding:6px 10px;
+
+    border-radius:12px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#666;
+
+}

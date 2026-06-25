@@ -1,0 +1,236 @@
+<template>
+
+    <div class="event-container">
+
+        <div class="event-card">
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <h1>Broadcast Event</h1>
+
+                <lightning-button-icon
+                    icon-name="utility:close"
+                    alternative-text="Close"
+                    onclick={closeModal}>
+                </lightning-button-icon>
+
+            </div>
+
+            <!-- BODY -->
+
+            <div class="body-section">
+
+                <!-- LEFT SIDE -->
+
+                <div class="cover-section">
+
+                    <div class="cover-upload">
+
+                        <lightning-input
+                            type="file"
+                            accept=".png,.jpg,.jpeg"
+                            onchange={handleFileUpload}>
+                        </lightning-input>
+
+                        <template if:true={imagePreview}>
+
+                            <img
+                                src={imagePreview}
+                                class="cover-preview"/>
+
+                        </template>
+
+                        <template if:false={imagePreview}>
+
+                            <div class="cover-placeholder">
+
+                                <lightning-icon
+                                    icon-name="utility:image"
+                                    size="large">
+                                </lightning-icon>
+
+                                <p>ADD COVER</p>
+
+                            </div>
+
+                        </template>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE -->
+
+                <div class="form-section">
+
+                    <!-- TITLE -->
+
+                    <input
+                        class="title-input"
+                        type="text"
+                        placeholder="What's the title? ✨"
+                        onchange={handleTitle}>
+
+                    <!-- DESCRIPTION -->
+
+                    <textarea
+                        class="description-box"
+                        placeholder="Tell the community about it..."
+                        onchange={handleDescription}>
+                    </textarea>
+
+                    <!-- EVENT TYPES -->
+
+                    <div class="type-buttons">
+
+                        <button
+                            class={pollClass}
+                            data-type="Poll"
+                            onclick={selectType}>
+                            POLL
+                        </button>
+
+                        <button
+                            class={challengeClass}
+                            data-type="Challenge"
+                            onclick={selectType}>
+                            CHALLENGE
+                        </button>
+
+                        <button
+                            class={hackathonClass}
+                            data-type="Hackathon"
+                            onclick={selectType}>
+                            HACKATHON
+                        </button>
+
+                        <button
+                            class={announcementClass}
+                            data-type="Announcement"
+                            onclick={selectType}>
+                            ANNOUNCEMENT
+                        </button>
+
+                    </div>
+
+                    <!-- LOCATION -->
+
+                    <div class="field-row">
+
+                        <div class="field-box">
+
+                            <label>
+                                EVENT LOCATION
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="e.g. Google Meet, Conference Hall"
+                                onchange={handleLocation}>
+                        </div>
+
+                        <div class="field-box">
+
+                            <label>
+                                DATE & TIME
+                            </label>
+
+                            <input
+                                type="datetime-local"
+                                onchange={handleDate}>
+                        </div>
+
+                    </div>
+
+                    <!-- POLL OPTIONS -->
+
+                    <template if:true={showPollOptions}>
+
+                        <div class="poll-section">
+
+                            <label>
+                                POLL OPTIONS
+                            </label>
+
+                            <input
+                                class="poll-input"
+                                placeholder="Option 1">
+
+                            <input
+                                class="poll-input"
+                                placeholder="Option 2">
+
+                            <button
+                                class="add-option-btn">
+
+                                + ADD OPTION
+
+                            </button>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+
+            <div class="footer">
+
+                <button
+                    class="launch-btn"
+                    onclick={createEvent}>
+
+                    Launch Event! 🚀
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SUCCESS POPUP -->
+
+    <template if:true={showSuccess}>
+
+        <div class="success-backdrop">
+
+            <div class="success-modal">
+
+                <div class="success-icon">
+
+                    ✓
+
+                </div>
+
+                <h2>
+
+                    Event Created Successfully
+
+                </h2>
+
+                <p>
+
+                    Your event has been published.
+
+                </p>
+
+                <button
+                    class="success-btn"
+                    onclick={closeSuccess}>
+
+                    Continue
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </template>
